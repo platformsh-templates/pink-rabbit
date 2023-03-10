@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Finding Bigfoot{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        
+        <nav class="navbar navbar-expand navbar-dark bg-dark ">
+            <a class="navbar-brand" href="{{ path('app_homepage') }}">
+                <img src="{{ asset('build/images/bigfoot.png') }}" width="25" height="30" class="d-inline-block align-top" alt="sasquatch">
+                {{ site_name }}
+            </a>
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('app_homepage') }}">Sightings</a>
+                </li>
+                <li class="nav-item mr-2">
+                  <a class="nav-link" href="{{ path('app_about') }}">About</a>
+                </li>
+                {% if is_granted('ROLE_USER') %}
+                <li class="nav-item">
+                    <a class="btn btn-outline-secondary nav-link" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i> Log Out {{ app.user.username }}</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="btn btn-outline-info my-2 my-sm-0 nav-link" href="{{ path('app_login') }}">Log In</a>
+                </li>
+                {% endif %}
+              </ul>
+            
+        </nav>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col mb-5 top-nav">
+                    <h1 class="mt-5">Bigfoot is out there</h1>
+                </div>
+            </div>
+            <div class="row">
+                {% block body %}{% endblock %}
+            </div>
+            <div class="row">
+                <div class="col footer-nav">
+                    <p class="pt-4">Made with <span class="text-danger"><3</span> by the guys and gals at <u><a class="text-white" href="https://symfonycasts.com">SymfonyCasts</a></u></p>
+                </div>
+            </div>
+        </div>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>

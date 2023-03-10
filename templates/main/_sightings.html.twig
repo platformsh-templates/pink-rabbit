@@ -1,0 +1,15 @@
+{% for sighting in sightings %}
+    <div class="divTableRow sightingLink">
+        <div class="divTableCell"><a class="text-white" href="{{ path('app_sighting_show', {id: sighting.id}) }}">
+                {{ sighting.title }}
+            </a>
+        </div>
+        <div class="divTableCell">
+            <time class="table-content" datetime="{{ sighting.createdAt|date('Y-m-d H:i') }}">{{ sighting.createdAt|time_diff }}</time>
+        </div>
+        <div class="divTableCell">
+            <a class="text-white table-content text-center" href="{{ path('app_sighting_show', {id: sighting.id}) }}">{{ sighting.comments|length }}</a>
+        </div>
+    </div>
+
+{% endfor %}

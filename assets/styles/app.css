@@ -1,0 +1,85 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+body {
+    background-color: rgb(21, 32, 43);
+    color: #fff;
+}
+
+.top-nav {
+    border-bottom: 1px solid #48535E;
+}
+
+.footer-nav {
+    border-top: 1px solid #48535E;
+}
+
+.big-foot-img {
+    height: 200px;
+    width: auto;
+}
+
+.repo-list-container {
+    background-color: #17a2b8;
+}
+
+.table-content {
+    font-size: .8rem;
+}
+
+.sighting-log-container {
+    border-bottom: 2px dashed #48535E;
+}
+
+.comment-container {
+    background-color: #343a40;
+    border-radius: 5px;
+}
+
+/* DivTable.com */
+.divTable{
+    display: table;
+    width: 100%;
+}
+.divTableRow {
+    display: table-row;
+    padding: 0.75rem;
+}
+.divTableCell, .divTableHead {
+    /*border: 1px solid #999999;*/
+    display: table-cell;
+    padding: 3px 10px;
+}
+.divTableHeading {
+    background-color: #EEE;
+    display: table-header-group;
+    font-weight: bold;
+}
+.divTableFoot {
+    background-color: #EEE;
+    display: table-footer-group;
+    font-weight: bold;
+}
+.divTableBody {
+    display: table-row-group;
+}
+
+.table-dark.table-striped .divTableRow:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-dark.table-hover .divTableRow:hover {
+    background-color: rgba(255, 255, 255, 0.075);
+}
+
+.sightingLink {
+    cursor: pointer;
+}
+
+.table-dark.table-hover .sightingLink.divTableRow:hover .divTableCell {
+    text-decoration: underline;
+}
+
+/*a {*/
+/*    display: block;*/
+/*}*/

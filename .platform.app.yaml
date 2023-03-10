@@ -1,0 +1,88 @@
+# This file describes an application. You can have multiple applications
+# in the same project.
+
+# The name of this app. Must be unique within a project.
+name: app
+
+# The type of the application to build.
+type: php:8.2
+
+dependencies:
+    php:
+        composer/composer: "^2"
+
+build:
+    flavor: none
+
+runtime:
+    extensions:
+        - ctype
+        - iconv
+        - apcu
+        - mbstring
+        - sodium
+        - xsl
+        - pdo_pgsql
+
+variables:
+    env:
+        # ensure that assets won't be built as they are already committed.
+        NO_YARN: 1
+    php:
+        assert.active: off
+
+# The hooks that will be performed when the package is deployed.
+hooks:
+    build: |
+        set -x -e
+
+        curl -s https://get.symfony.com/cloud/configurator | bash
+        symfony-build
+    deploy: |
+        set -x -e
+
+        symfony-deploy
+
+# The relationships of the application with services or other applications.
+# The left-hand side is the name of the relationship as it will be exposed
+# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
+# side is in the form `<service name>:<endpoint name>`.
+relationships:
+    database: "db:postgresql"
+
+# The size of the persistent disk of the application (in MB).
+disk: 2048
+
+# The mounts that will be performed when the package is deployed.
+mounts:
+    "/var":
+        source: local
+        source_path: "var"
+
+# The configuration of app when it is exposed to the web.
+web:
+    locations:
+        "/":
+            # The public directory of the app, relative to its root.
+            root: "public"
+            # The front-controller script to send non-static requests to.
+            passthru: "/index.php"
+            expires: 1h
+
+crons:
+    update-sighting:
+        spec: '*/5 * * * *'
+        cmd: './bin/console app:update-sighting-scores'
+
+source:
+    operations:
+        update-dependencies:
+            command: |
+                set -e
+                composer update
+                git add composer.lock
+                git commit --allow-empty -m "Dependency updates."
+        sanitize-data:
+            command: |
+                set -e
+                php bin/console app:sanitize-data

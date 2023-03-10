@@ -1,0 +1,14 @@
+sync:
+    defaults:
+        mode: "two-way-resolved"
+        ignore:
+            paths:
+                - "/var"
+                - "**.DS_Store"
+            vcs: true
+        symlink:
+            mode: "portable"
+
+        permissions:
+            defaultFileMode: 0644
+            defaultDirectoryMode: 0755

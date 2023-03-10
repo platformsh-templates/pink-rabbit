@@ -1,0 +1,24 @@
+name: bigfoot-symfony
+recipe: symfony
+config:
+  php: '8.0'
+  via: nginx
+  webroot: public
+
+services:
+  blackfire:
+    type: blackfire
+    app_service: appserver
+    server_id: <BLACKFIRE_SERVER_ID>
+    server_token: <BLACKFIRE_SERVER_TOKEN>
+    client_id: <BLACKFIRE_CLIENT_ID>
+    client_token: <BLACKFIRE_CLIENT_TOKEN>
+
+tooling:
+  blackfire:
+    cmd: /usr/local/bin/blackfire
+    service: appserver
+
+  blackfire-player:
+    cmd: /usr/local/bin/blackfire-player
+    service: appserver

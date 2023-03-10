@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+## Description: Run Symfony command
+## Usage: sf
+## Example: "ddev sf"
+
+# https://ddev.readthedocs.io/en/stable/users/extend/custom-commands/
+php bin/console $@

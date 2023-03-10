@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-8">
+        <h3>Recently Reported Sightings</h3>
+        <small>Submit yours to help us narrow down this search</small>
+        <div class="divTable table table-striped table-dark table-borderless table-hover">
+            <div class="divTableHeading">
+                <div class="divTableRow bg-info">
+                    <div class="divTableHead">Sighting Details</div>
+                    <div class="divTableHead">Posted</div>
+                    <div class="divTableHead">Comments</div>
+                </div>
+            </div>
+            <div class="divTableBody js-sightings-list" data-url="{{ path('app_sightings_partial_list') }}">
+                {{ include('main/_sightings.html.twig') }}
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="js-github-organization" data-url="{{ path('app_github_organization_info') }}"></div>
+    </div>
+{% endblock %}
