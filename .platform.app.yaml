@@ -23,6 +23,7 @@ runtime:
         - sodium
         - xsl
         - pdo_pgsql
+        - blackfire
 
 variables:
     env:
