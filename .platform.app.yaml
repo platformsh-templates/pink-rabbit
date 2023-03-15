@@ -42,6 +42,7 @@ hooks:
 
         npm install
         npm run build
+
     deploy: |
         set -x -e
 
