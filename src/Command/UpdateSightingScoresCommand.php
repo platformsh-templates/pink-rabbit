@@ -32,6 +32,10 @@ class UpdateSightingScoresCommand extends Command
         $sightings = $this->pinkRabbitRepository->findAll();
         $io->progressStart(count($sightings));
         foreach ($sightings as $sighting) {
+            if ($sighting->getTitle() === 'Follow me!') {
+                continue;
+            }
+
             $io->progressAdvance();
             $characterCount = 0;
             foreach ($sighting->getComments() as $comment) {
@@ -40,8 +44,8 @@ class UpdateSightingScoresCommand extends Command
 
             $score = ceil(min($characterCount / 500, 10));
             $sighting->setScore($score);
-            $this->entityManager->flush();
         }
+        $this->entityManager->flush();
         $io->progressFinish();
 
         return static::SUCCESS;
