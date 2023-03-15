@@ -39,7 +39,6 @@ hooks:
 
         curl -s https://get.symfony.com/cloud/configurator | bash
         symfony-build
-        npm run build
     deploy: |
         set -x -e
 
