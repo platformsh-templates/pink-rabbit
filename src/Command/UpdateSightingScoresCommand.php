@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Repository\BigFootSightingRepository;
+use App\Repository\PinkRabbitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,7 +13,7 @@ class UpdateSightingScoresCommand extends Command
 {
     protected static $defaultName = 'app:update-sighting-scores';
 
-    public function __construct(private BigFootSightingRepository $bigFootSightingRepository, private EntityManagerInterface $entityManager)
+    public function __construct(private PinkRabbitRepository $pinkRabbitRepository, private EntityManagerInterface $entityManager)
     {
         parent::__construct();
     }
@@ -29,7 +29,7 @@ class UpdateSightingScoresCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $sightings = $this->bigFootSightingRepository->findAll();
+        $sightings = $this->pinkRabbitRepository->findAll();
         $io->progressStart(count($sightings));
         foreach ($sightings as $sighting) {
             $io->progressAdvance();

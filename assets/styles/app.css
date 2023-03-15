@@ -80,6 +80,19 @@ body {
     text-decoration: underline;
 }
 
-/*a {*/
-/*    display: block;*/
-/*}*/
+.avatar-img {
+    width: inherit;
+}
+
+.avatar-chessy img {
+    background-color: #fff;
+}
+
+.drink-me {
+    font-size: 1.1em;
+}
+
+.drink-me a,
+.drink-me a:visited {
+    color: #fff;
+}

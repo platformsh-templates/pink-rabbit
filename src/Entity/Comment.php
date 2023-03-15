@@ -22,9 +22,9 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
 
-    #[ORM\ManyToOne(targetEntity: BigFootSighting::class, inversedBy: 'comments')]
+    #[ORM\ManyToOne(targetEntity: PinkRabbit::class, inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?BigFootSighting $bigFootSighting = null;
+    private ?PinkRabbit $pinkRabbit = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private \DateTime $createdAt;
@@ -63,14 +63,14 @@ class Comment
         return $this;
     }
 
-    public function getBigFootSighting(): ?BigFootSighting
+    public function getPinkRabbit(): ?PinkRabbit
     {
-        return $this->bigFootSighting;
+        return $this->pinkRabbit;
     }
 
-    public function setBigFootSighting(?BigFootSighting $bigFootSighting): self
+    public function setPinkRabbit(?PinkRabbit $pinkRabbit): self
     {
-        $this->bigFootSighting = $bigFootSighting;
+        $this->pinkRabbit = $pinkRabbit;
 
         return $this;
     }

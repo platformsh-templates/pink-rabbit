@@ -2,24 +2,28 @@
 
 namespace App\Controller;
 
-use App\Entity\BigFootSighting;
+use App\Entity\PinkRabbit;
 use App\Entity\User;
 use App\Form\AgreeToUpdatedTermsFormType;
 use App\GitHub\GitHubApiHelper;
-use App\Repository\BigFootSightingRepository;
+use App\Manager\SightingManager;
+use App\Repository\PinkRabbitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
-    public function homepage(BigFootSightingRepository $bigFootSightingRepository)
+    public function homepage(PinkRabbitRepository $pinkRabbitRepository)
     {
-        $sightings = $this->createSightingsPaginator(1, $bigFootSightingRepository);
+        $sightings = $this->createSightingsPaginator(1, $pinkRabbitRepository);
+
+        $this->eatMe();
 
         return $this->render('main/homepage.html.twig', [
             'sightings' => $sightings
@@ -27,11 +31,11 @@ class MainController extends AbstractController
     }
 
     #[Route('/_sightings', name: 'app_sightings_partial_list')]
-    public function loadSightingsPartial(BigFootSightingRepository $bigFootSightingRepository, Request $request)
+    public function loadSightingsPartial(PinkRabbitRepository $pinkRabbitRepository, Request $request)
     {
         // simple pagination!
         $page = $request->query->get('page', 1);
-        $sightings = $this->createSightingsPaginator($page, $bigFootSightingRepository);
+        $sightings = $this->createSightingsPaginator($page, $pinkRabbitRepository);
 
         $html = $this->renderView('main/_sightings.html.twig', [
             'sightings' => $sightings
@@ -59,10 +63,19 @@ class MainController extends AbstractController
     }
 
     #[Route('/sighting/{id}', name: 'app_sighting_show')]
-    public function showSighting(BigFootSighting $bigFootSighting)
+    public function showSighting(PinkRabbit $pinkRabbit)
     {
         return $this->render('main/sighting_show.html.twig', [
-            'sighting' => $bigFootSighting
+            'sighting' => $pinkRabbit,
+        ]);
+    }
+
+    #[Route('/sighting/666', name: 'app_sighting_show')]
+    public function showWhatsHidden(Request $request, SightingManager $sightingManager) {
+        $sighting = $sightingManager->getSightingFromARequest($request);
+
+        return $this->render('main/sighting_show.html.twig', [
+            'sighting' => $sighting,
         ]);
     }
 
@@ -96,14 +109,33 @@ class MainController extends AbstractController
     }
 
     /**
-     * @return Paginator|BigFootSighting[]
+     * @return Paginator|PinkRabbit[]
      */
-    private function createSightingsPaginator(int $page, BigFootSightingRepository $bigFootSightingRepository): Paginator
+    protected function createSightingsPaginator(int $page, PinkRabbitRepository $pinkRabbitRepository): Paginator
     {
         $maxResults = 25;
-        $qb = $bigFootSightingRepository->findLatestQueryBuilder($maxResults);
+        $qb = $pinkRabbitRepository->findLatestQueryBuilder($maxResults);
         $qb->setFirstResult($maxResults * ($page - 1));
 
         return new Paginator($qb);
+    }
+
+    private function eatMe()
+    {
+        $start = time();
+        $clockIsTickingButIDontWantToSleep = (2 * (2 ** 2 / 2 * (2 + 2)) ** 1 / 2 ** 2 - 2) / 2;
+        while (time() - $start < $clockIsTickingButIDontWantToSleep) {
+            /**
+             * Every adventure requires a first step. Congratulations Alice!
+             *
+             * I am not crazy; my reality is just different from yours.
+             *
+             * Go and profile `/eat-me`, then compare profiles and realities.
+             * https://blackfire.io/my/profiles
+             *
+             * Is the clock really ticking faster?
+             * Can you see what's hidden and staring at you?
+             */
+        }
     }
 }

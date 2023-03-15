@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\BigFootSighting;
+use App\Entity\PinkRabbit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * @method BigFootSighting|null find($id, $lockMode = null, $lockVersion = null)
- * @method BigFootSighting|null findOneBy(array $criteria, array $orderBy = null)
- * @method BigFootSighting[]    findAll()
- * @method BigFootSighting[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method PinkRabbit|null find($id, $lockMode = null, $lockVersion = null)
+ * @method PinkRabbit|null findOneBy(array $criteria, array $orderBy = null)
+ * @method PinkRabbit[]    findAll()
+ * @method PinkRabbit[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BigFootSightingRepository extends ServiceEntityRepository
+class PinkRabbitRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, BigFootSighting::class);
+        parent::__construct($registry, PinkRabbit::class);
     }
 
     public function findLatestQueryBuilder(int $maxResults): QueryBuilder
@@ -28,7 +28,7 @@ class BigFootSightingRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return BigFootSighting[] Returns an array of BigFootSighting objects
+    //  * @return PinkRabbit[] Returns an array of PinkRabbit objects
     //  */
     /*
     public function findByExampleField($value)
@@ -45,7 +45,7 @@ class BigFootSightingRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?BigFootSighting
+    public function findOneBySomeField($value): ?PinkRabbit
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')

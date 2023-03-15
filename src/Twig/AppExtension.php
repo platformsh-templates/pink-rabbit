@@ -22,10 +22,14 @@ class AppExtension extends AbstractExtension
 
     public function getUserActivityText(User $user): string
     {
+        if ('Chessy' === $user->getUsername()) {
+            return 'floating smile';
+        }
+
         $commentCount = $this->commentHelper->countRecentCommentsForUser($user);
 
         if ($commentCount > 50) {
-            return 'bigfoot fanatic';
+            return 'pink rabbit fanatic';
         }
 
         if ($commentCount > 30) {

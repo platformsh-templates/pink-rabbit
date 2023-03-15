@@ -3,14 +3,15 @@
 namespace App\DataFixtures;
 
 use App\Entity\Comment;
-use App\Repository\BigFootSightingRepository;
+use App\Repository\PinkRabbitRepository;
 use App\Repository\UserRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 
-class Sighting135Fixtures extends Fixture
+class Sighting135Fixtures extends Fixture implements FixtureGroupInterface
 {
     /** @var ObjectManager */
     private $objectManager;
@@ -20,8 +21,13 @@ class Sighting135Fixtures extends Fixture
 
     public function __construct(
         private UserRepository $userRepository,
-        private BigFootSightingRepository $bigFootSightingRepository
+        private PinkRabbitRepository $pinkRabbitRepository
     ) {
+    }
+
+    public static function getGroups(): array
+    {
+        return ['secondary'];
     }
 
     public function load(ObjectManager $manager)
@@ -36,23 +42,23 @@ class Sighting135Fixtures extends Fixture
 
     private function createComments()
     {
-        $sighting = $this->bigFootSightingRepository->find(135);
+        $sighting = $this->pinkRabbitRepository->find(135);
         $users = $this->userRepository->findAll();
 
         $this->createMany(500, function (int $i) use ($sighting, $users) {
             $comment = new Comment();
             if ($i % 5 === 0) {
                 // make every 5th comment done by a small set of users
-                // Wow! They must *love* Bigfoot!
+                // Wow! They must *love* Winky!
                 $rangeMax = floor(count($users) / 10);
                 $comment->setOwner($users[rand(0, $rangeMax)]);
             } else {
                 $comment->setOwner($users[array_rand($users)]);
             }
-            $comment->setBigFootSighting($sighting);
+            $comment->setPinkRabbit($sighting);
             $comment->setContent($this->faker->paragraph);
             $comment->setCreatedAt($this->faker->dateTimeBetween(
-                $comment->getBigFootSighting()->getCreatedAt(),
+                $comment->getPinkRabbit()->getCreatedAt(),
                 'now'
             ));
 
