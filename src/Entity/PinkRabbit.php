@@ -2,14 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\BigFootSightingRepository;
+use App\Repository\PinkRabbitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: BigFootSightingRepository::class)]
-class BigFootSighting
+#[ORM\Entity(repositoryClass: PinkRabbitRepository::class)]
+class PinkRabbit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -33,7 +33,7 @@ class BigFootSighting
     #[ORM\Column(type: 'decimal', precision: 9, scale: 6)]
     private float $longitude;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'bigFootSightings')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'pinkRabbits')]
     #[ORM\JoinColumn(nullable: false)]
     private User $owner;
 
@@ -43,7 +43,7 @@ class BigFootSighting
     /**
      * @var Comment[]|Collection
      */
-    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: "bigFootSighting")]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: "pinkRabbit")]
     #[ORM\OrderBy(['createdAt' => 'DESC'])]
     private Collection $comments;
 
@@ -158,7 +158,7 @@ class BigFootSighting
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
-            $comment->setBigFootSighting($this);
+            $comment->setPinkRabbit($this);
         }
 
         return $this;
@@ -169,8 +169,8 @@ class BigFootSighting
         if ($this->comments->contains($comment)) {
             $this->comments->removeElement($comment);
             // set the owning side to null (unless already changed)
-            if ($comment->getBigFootSighting() === $this) {
-                $comment->setBigFootSighting(null);
+            if ($comment->getPinkRabbit() === $this) {
+                $comment->setPinkRabbit(null);
             }
         }
 

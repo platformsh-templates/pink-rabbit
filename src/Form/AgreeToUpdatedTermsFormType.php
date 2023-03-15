@@ -15,7 +15,7 @@ class AgreeToUpdatedTermsFormType extends AbstractType
         $builder
             ->add('agree', CheckboxType::class, [
                 'constraints' => [new IsTrue([
-                    'message' => 'You must agree that BigFoot *might* be real!'
+                    'message' => 'You must agree that Pink Rabbits *might* be real!'
                 ])]
             ])
         ;

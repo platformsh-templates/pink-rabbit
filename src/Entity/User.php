@@ -35,8 +35,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::JSON)]
     private array $roles = [];
 
-    #[ORM\OneToMany(mappedBy: "owner", targetEntity: BigFootSighting::class)]
-    private Collection $bigFootSightings;
+    #[ORM\OneToMany(mappedBy: "owner", targetEntity: PinkRabbit::class)]
+    private Collection $pinkRabbits;
 
     #[ORM\OneToMany(mappedBy: "owner", targetEntity: Comment::class)]
     private Collection $comments;
@@ -46,7 +46,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct()
     {
-        $this->bigFootSightings = new ArrayCollection();
+        $this->pinkRabbits = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -145,30 +145,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection|BigFootSighting[]
+     * @return Collection|PinkRabbit[]
      */
-    public function getBigFootSightings(): Collection
+    public function getPinkRabbits(): Collection
     {
-        return $this->bigFootSightings;
+        return $this->pinkRabbits;
     }
 
-    public function addBigFootSighting(BigFootSighting $bigFootSighting): self
+    public function addPinkRabbit(PinkRabbit $pinkRabbit): self
     {
-        if (!$this->bigFootSightings->contains($bigFootSighting)) {
-            $this->bigFootSightings[] = $bigFootSighting;
-            $bigFootSighting->setOwner($this);
+        if (!$this->pinkRabbits->contains($pinkRabbit)) {
+            $this->pinkRabbits[] = $pinkRabbit;
+            $pinkRabbit->setOwner($this);
         }
 
         return $this;
     }
 
-    public function removeBigFootSighting(BigFootSighting $bigFootSighting): self
+    public function removePinkRabbit(PinkRabbit $pinkRabbit): self
     {
-        if ($this->bigFootSightings->contains($bigFootSighting)) {
-            $this->bigFootSightings->removeElement($bigFootSighting);
+        if ($this->pinkRabbits->contains($pinkRabbit)) {
+            $this->pinkRabbits->removeElement($pinkRabbit);
             // set the owning side to null (unless already changed)
-            if ($bigFootSighting->getOwner() === $this) {
-                $bigFootSighting->setOwner(null);
+            if ($pinkRabbit->getOwner() === $this) {
+                $pinkRabbit->setOwner(null);
             }
         }
 
@@ -177,6 +177,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getAvatarUrl(): string
     {
+        if ('Chessy' === $this->getUsername()) {
+            return '/pink_winky_blinking.gif';
+        }
+
         return sprintf('https://avatars.dicebear.com/4.5/api/human/%s.svg?mood[]=happy', $this->getEmail());
     }
 

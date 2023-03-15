@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% if app.user %}
+        <div class="col-12 mb-5">
+            <h2 class="h2 mb-2 font-weight-normal"><span>Al</span>ice, congratulations!</h2>
+            <p class="drink-me">Now, get back to the booth and tell the <strong>title</strong> of the <strong>last post</strong> on <strong><a href="https://blog.blackfire.io/">Blackfire Blog</a></strong> to enter the raffle to win a prize!</p>
+            <p class="drink-me">You have discovered Blackire Profiler. Continue your journey on <strong><a href="https://demo.blackfire.io/">demo.blackfire.io</a></strong> to discover <strong>all Blackfire features</strong> including live Monitoring.</p>
+        </div>
+    {% endif %}
     <div class="col-8">
         <h3>Recently Reported Sightings</h3>
         <small>Submit yours to help us narrow down this search</small>

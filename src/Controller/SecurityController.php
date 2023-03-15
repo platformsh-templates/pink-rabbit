@@ -21,6 +21,11 @@ class SecurityController extends AbstractController
         $authenticationUtils,
         UserRepository $userRepository
     ): Response {
+
+        if (class_exists('BlackfireProbe')) {
+            \BlackfireProbe::addMarker('<- Timeline metrics');
+        }
+
         if ($this->getUser()) {
             $this->redirectToRoute('app_homepage');
         }

@@ -1,0 +1,98 @@
+# Test the performance of your application
+# https://blog.blackfire.io/getting-started-with-the-blackfire-test-suite-part-1-of-series.html
+#
+# Define Assertions, Custom Metrics and Synthetic Monitoring in this file
+# Read more about .blackfire.yaml and Performance Test at https://blackfire.io/docs/testing-cookbooks/tests
+
+
+metrics:
+    app.controller:
+        label: "SecurityController::login"
+        description: |
+            You are seeing that one just now, right?
+            What is essential is, sometimes, invisible to the eye.
+            This is why we need Observability.
+        timeline: true
+        matching_calls:
+            php:
+                - callee: "=App\\Controller\\EatMeController::floatingSmile"
+
+    CHECK.THE.ASSERTIONS.TAB:
+        label: "SecurityController::login"
+        description: |
+            This is where the magic is happening if you want to keep
+            your kingdom as performant as possible.
+        timeline: true
+        matching_calls:
+            php:
+                - callee: "=App\\Controller\\SecurityController::login"
+
+
+tests:
+    "The homepage should be fast":
+        path: "/"
+        assertions:
+            - "metrics.sql.queries.count < 30"
+            - "metrics.doctrine.entities.hydrated.count < 30"
+
+    "Check the Recommendations tab":
+        path: "/.*"
+        assertions:
+            - "main.wall_time > 1ms"
+        description: |
+            Recommendations are personalized actionable insights based on the profile data. Only the ones relevant to the script profiled are displayed.
+            
+            They can help you speed up your performance optimization work!
+
+            Check the Recommendations tab, and come back here.
+
+    "It's always test time!":
+        path: "/login"
+        assertions:
+            - "metrics.CHECK.THE.ASSERTIONS.TAB.count == 666"
+        description: |
+            Are we losing our minds? Why would we want to go 666 times within a specific function?
+
+            Let's keep our application under control by writing performance tests and custom metrics.
+
+            Alice, now check the .blackfire.yaml file where the test party is happening
+
+    ##### " -> Drink me! <- ":
+    #####     path: "If I were you, I would really log in to play cricket."
+    #####     assertions:
+    #####         - "main.wall_time == 666ms"
+
+
+
+# Read more about writing scenarios at https://blackfire.io/docs/builds-cookbooks/scenarios
+# Test your applications' critical user journeys here.
+# Every page visited, link clicked or form submited triggers a profile
+# As for every profile, matching assertions are evaluated
+scenarios: |
+    #!blackfire-player
+
+    scenario
+        name 'The homepage should answer with a 200 status code'
+
+        visit url('/')
+            expect status_code() == 200
+
+        visit url('/eat-me')
+            expect status_code() == 200
+
+        visit url('/sighting/666')
+            expect status_code() == 200
+
+        visit url('/login')
+            expect status_code() == 200
+
+        submit button("Sign in")
+            name "Authenticate"
+            param email user_login
+            param password user_password
+
+        visit url('/')
+            expect status_code() == 666
+
+        visit url('/the-booth')
+            expect status_code() == 418

@@ -2,16 +2,17 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\BigFootSighting;
+use App\Entity\PinkRabbit;
 use App\Entity\Comment;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Faker\Generator;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class AppFixtures extends Fixture
+class AppFixtures extends Fixture implements FixtureGroupInterface
 {
     /** @var ObjectManager */
     private $objectManager;
@@ -24,6 +25,11 @@ class AppFixtures extends Fixture
         private array $users = [],
         private array $sightings = []
     ) {
+    }
+
+    public static function getGroups(): array
+    {
+        return ['primary'];
     }
 
     public function load(ObjectManager $manager)
@@ -56,7 +62,7 @@ class AppFixtures extends Fixture
     private function createSightings()
     {
         $this->sightings = $this->createMany(200, function() {
-            $sighting = new BigFootSighting();
+            $sighting = new PinkRabbit();
             $sighting->setOwner($this->users[array_rand($this->users)]);
             $sighting->setTitle($this->faker->realText(80));
             $sighting->setDescription($this->faker->paragraph(5));
@@ -75,16 +81,16 @@ class AppFixtures extends Fixture
             $comment = new Comment();
             if ($i % 5 === 0) {
                 // make every 5th comment done by a small set of users
-                // Wow! They must *love* Bigfoot!
+                // Wow! They must *love* Winky!
                 $rangeMax = floor(count($this->users) / 10);
                 $comment->setOwner($this->users[rand(0, $rangeMax)]);
             } else {
                 $comment->setOwner($this->users[array_rand($this->users)]);
             }
-            $comment->setBigFootSighting($this->sightings[array_rand($this->sightings)]);
+            $comment->setPinkRabbit($this->sightings[array_rand($this->sightings)]);
             $comment->setContent($this->faker->paragraph);
             $comment->setCreatedAt($this->faker->dateTimeBetween(
-                $comment->getBigFootSighting()->getCreatedAt(),
+                $comment->getPinkRabbit()->getCreatedAt(),
                 'now'
             ));
 
