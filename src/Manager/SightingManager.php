@@ -17,6 +17,8 @@ class SightingManager
 
     public function getSightingFromARequest(Request $request): PinkRabbit
     {
+        die($request->getSchemeAndHttpHost() . '/pink_winky_blinking.gif');
+    
         $this->httpClient->request(
             'GET',
             $request->getSchemeAndHttpHost() . '/pink_winky_blinking.gif'
