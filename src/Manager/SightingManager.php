@@ -17,7 +17,7 @@ class SightingManager
 
     public function getSightingFromARequest(Request $request): PinkRabbit
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 42; $i++) {
             $this->httpClient->request(
                 'GET',
                 $request->getSchemeAndHttpHost() . '/pink_winky_blinking.gif'
