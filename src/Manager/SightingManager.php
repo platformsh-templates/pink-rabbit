@@ -17,10 +17,12 @@ class SightingManager
 
     public function getSightingFromARequest(Request $request): PinkRabbit
     {
-        $this->httpClient->request(
-            'GET',
-            $request->getSchemeAndHttpHost() . '/pink_winky_blinking.gif'
-        );
+        for ($i = 0; $i < 10; $i++) {
+            $this->httpClient->request(
+                'GET',
+                $request->getSchemeAndHttpHost() . '/pink_winky_blinking.gif'
+            );
+        }
 
         /**
          * Al!ce, only a few find the way, some don’t recognize it when they do;
