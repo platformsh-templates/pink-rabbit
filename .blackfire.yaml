@@ -40,7 +40,8 @@ tests:
         assertions:
             - "main.wall_time > 1ms"
         description: |
-            Recommendations are personalized actionable insights based on the profile data. Only the ones relevant to the script profiled are displayed.
+            Recommendations are personalized actionable insights based on the profile data.
+            Only the ones relevant to the script profiled are displayed.
             
             They can help you speed up your performance optimization work!
 
