@@ -1,7 +1,7 @@
 # Blackfire.io: Revealing Performance Secrets with Profiling
 
-Well hi there Alice! It's seems you've seen a Pink Rabbit at SymfonyLive Paris
-2023, and fell into a hole.
+Well hi there Alice! It's seems you've seen a Pink Rabbit at SymfonyOnline June 2023,
+and fell into a hole.
 
 This repository is the code of [escape.book.b7e.io](https://escape.book.b7e.io/),
 the magical place where you landed.
