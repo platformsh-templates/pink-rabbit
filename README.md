@@ -12,7 +12,7 @@ and reducing the resources it's consuming.
 You may have seen a Pink Rabbit checking compulsively their watch?
 
 You get the chance to find your way out and reach Platform.sh booth at
-SymfonyLive Paris 2023. Follow the Pink Rabbit to enter the raffle to win a prize.
+SymfonyOnline June 2023. Follow the Pink Rabbit to enter the raffle to win a prize.
 
 Here's what you need to play the game:
 - [create a Blackfire account](https://blackfire.io/signup), if you don't already
