@@ -26,7 +26,8 @@ class MainController extends AbstractController
         $this->eatMe();
 
         return $this->render('main/homepage.html.twig', [
-            'sightings' => $sightings
+            'sightings' => $sightings,
+            'nopouc' => $_ENV['EDOC_NOPOUC'], // You really thought this would be in here, don't you?
         ]);
     }
 
