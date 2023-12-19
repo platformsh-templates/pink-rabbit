@@ -65,20 +65,21 @@ class MainController extends AbstractController
         ]);
     }
 
+    #[Route('/sighting/666', name: 'app_sighting_show_666')]
+    public function showWhatsHidden(Request $request, SightingManager $sightingManager): Response
+    {
+        $sighting = $sightingManager->getSightingFromARequest($request);
+
+        return $this->render('main/sighting_show.html.twig', [
+            'sighting' => $sighting,
+        ]);
+    }
+
     #[Route('/sighting/{id}', name: 'app_sighting_show')]
     public function showSighting(PinkRabbit $pinkRabbit): Response
     {
         return $this->render('main/sighting_show.html.twig', [
             'sighting' => $pinkRabbit,
-        ]);
-    }
-
-    #[Route('/sighting/666', name: 'app_sighting_show')]
-    public function showWhatsHidden(Request $request, SightingManager $sightingManager): Response {
-        $sighting = $sightingManager->getSightingFromARequest($request);
-
-        return $this->render('main/sighting_show.html.twig', [
-            'sighting' => $sighting,
         ]);
     }
 
