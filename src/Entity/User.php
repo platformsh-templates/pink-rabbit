@@ -182,7 +182,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             return '/pink_winky_blinking.gif';
         }
 
-        return sprintf('https://avatars.dicebear.com/4.5/api/human/%s.svg?mood[]=happy', $this->getEmail());
+        return sprintf('https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=%s', urlencode($this->getEmail()));
     }
 
     /**
