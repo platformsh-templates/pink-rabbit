@@ -13,10 +13,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class SanitizeDataCommand extends Command
 {
-    protected static $defaultName = 'app:sanitize-data';
-
-    protected static $defaultDescription = 'Sanitize user data (username and email).';
-
     public function __construct(
         private UserRepository $userRepository,
         private EntityManagerInterface $entityManager
@@ -28,11 +24,12 @@ class SanitizeDataCommand extends Command
     protected function configure()
     {
         $this
+            ->setName('app:sanitize-data')
             ->setDescription('This command allows you to sanitize user data (username and email).')
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 

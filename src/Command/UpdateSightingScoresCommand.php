@@ -11,8 +11,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class UpdateSightingScoresCommand extends Command
 {
-    protected static $defaultName = 'app:update-sighting-scores';
-
     public function __construct(private PinkRabbitRepository $pinkRabbitRepository, private EntityManagerInterface $entityManager)
     {
         parent::__construct();
@@ -21,11 +19,12 @@ class UpdateSightingScoresCommand extends Command
     protected function configure()
     {
         $this
+            ->setName('app:update-sighting-scores')
             ->setDescription('Update the "score" for a sighting')
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 

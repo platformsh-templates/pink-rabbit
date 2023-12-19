@@ -1,8 +1,4 @@
 security:
-    # a new authentication system is available since Symfony 5.1 to make
-    # Symfony security more extensible and easier to understand
-    # https://symfony.com/doc/current/security.html
-    enable_authenticator_manager: true
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
