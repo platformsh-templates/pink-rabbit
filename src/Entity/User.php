@@ -32,6 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::STRING)]
     private ?string $password = null;
 
+    /** @var array<int, string> */
     #[ORM\Column(type: Types::JSON)]
     private array $roles = [];
 

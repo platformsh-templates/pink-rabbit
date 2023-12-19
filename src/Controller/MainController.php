@@ -11,7 +11,9 @@ use App\Repository\PinkRabbitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -19,7 +21,7 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
-    public function homepage(PinkRabbitRepository $pinkRabbitRepository)
+    public function homepage(PinkRabbitRepository $pinkRabbitRepository): Response
     {
         $sightings = $this->createSightingsPaginator(1, $pinkRabbitRepository);
 
@@ -32,7 +34,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/_sightings', name: 'app_sightings_partial_list')]
-    public function loadSightingsPartial(PinkRabbitRepository $pinkRabbitRepository, Request $request)
+    public function loadSightingsPartial(PinkRabbitRepository $pinkRabbitRepository, Request $request): JsonResponse
     {
         // simple pagination!
         $page = $request->query->get('page', 1);
@@ -51,7 +53,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/api/github-organization', name: 'app_github_organization_info')]
-    public function gitHubOrganizationInfo(GitHubApiHelper $apiHelper)
+    public function gitHubOrganizationInfo(GitHubApiHelper $apiHelper): JsonResponse
     {
         $organizationName = 'platformsh-templates'; // 'SymfonyCasts';
         $organization = $apiHelper->getOrganizationInfo($organizationName);
@@ -64,7 +66,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/sighting/{id}', name: 'app_sighting_show')]
-    public function showSighting(PinkRabbit $pinkRabbit)
+    public function showSighting(PinkRabbit $pinkRabbit): Response
     {
         return $this->render('main/sighting_show.html.twig', [
             'sighting' => $pinkRabbit,
@@ -72,7 +74,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/sighting/666', name: 'app_sighting_show')]
-    public function showWhatsHidden(Request $request, SightingManager $sightingManager) {
+    public function showWhatsHidden(Request $request, SightingManager $sightingManager): Response {
         $sighting = $sightingManager->getSightingFromARequest($request);
 
         return $this->render('main/sighting_show.html.twig', [
@@ -82,7 +84,7 @@ class MainController extends AbstractController
 
     #[Route('/terms/updated', name: 'agree_terms_update')]
     #[IsGranted('ROLE_USER')]
-    public function agreeUpdatedTerms(Request $request, EntityManagerInterface $entityManager)
+    public function agreeUpdatedTerms(Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(AgreeToUpdatedTermsFormType::class);
 
@@ -104,7 +106,7 @@ class MainController extends AbstractController
     }
 
     #[Route('/about', name: 'app_about')]
-    public function about()
+    public function about(): Response
     {
         return $this->render('main/about.html.twig');
     }
@@ -121,7 +123,7 @@ class MainController extends AbstractController
         return new Paginator($qb);
     }
 
-    private function eatMe()
+    private function eatMe(): void
     {
         $start = time();
         $clockIsTickingButIDontWantToSleep = (2 * (2 ** 2 / 2 * (2 + 2)) ** 1 / 2 ** 2 - 2) / 2;

@@ -41,7 +41,7 @@ class UpdateSightingScoresCommand extends Command
                 $characterCount += strlen($comment->getContent());
             }
 
-            $score = ceil(min($characterCount / 500, 10));
+            $score = (int) ceil(min($characterCount / 500, 10));
             $sighting->setScore($score);
         }
         $this->entityManager->flush();

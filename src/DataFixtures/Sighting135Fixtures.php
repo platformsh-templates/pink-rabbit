@@ -30,7 +30,7 @@ class Sighting135Fixtures extends Fixture implements FixtureGroupInterface
         return ['secondary'];
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $this->objectManager = $manager;
         $this->faker = Factory::create();
@@ -40,7 +40,7 @@ class Sighting135Fixtures extends Fixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    private function createComments()
+    private function createComments(): void
     {
         $sighting = $this->pinkRabbitRepository->find(135);
         $users = $this->userRepository->findAll();
@@ -50,7 +50,7 @@ class Sighting135Fixtures extends Fixture implements FixtureGroupInterface
             if ($i % 5 === 0) {
                 // make every 5th comment done by a small set of users
                 // Wow! They must *love* Winky!
-                $rangeMax = floor(count($users) / 10);
+                $rangeMax = (int) floor(count($users) / 10);
                 $comment->setOwner($users[rand(0, $rangeMax)]);
             } else {
                 $comment->setOwner($users[array_rand($users)]);
@@ -66,6 +66,9 @@ class Sighting135Fixtures extends Fixture implements FixtureGroupInterface
         });
     }
 
+    /**
+     * @return array<int, Comment>
+     */
     private function createMany(int $amount, callable $callback)
     {
         $objects = [];

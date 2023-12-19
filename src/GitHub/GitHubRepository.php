@@ -2,15 +2,17 @@
 
 namespace App\GitHub;
 
+use DateTimeInterface;
+
 class GitHubRepository
 {
-    private $name;
+    private string $name;
 
-    private $url;
+    private string $url;
 
-    private $updatedAt;
+    private DateTimeInterface $updatedAt;
 
-    public function __construct(string $fullName, string $url, \DateTimeInterface $updatedAt)
+    public function __construct(string $fullName, string $url, DateTimeInterface $updatedAt)
     {
         $this->name = $fullName;
         $this->url = $url;
@@ -27,7 +29,7 @@ class GitHubRepository
         return $this->url;
     }
 
-    public function getUpdatedAt(): \DateTimeInterface
+    public function getUpdatedAt(): DateTimeInterface
     {
         return $this->updatedAt;
     }

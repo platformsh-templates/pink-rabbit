@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\CheshireCat;
 use App\Repository\PinkRabbitRepository;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class EatMeController extends MainController
 {
     #[Route('/eat-me', name: 'app_eat_me_homepage')]
-    public function homepage(PinkRabbitRepository $pinkRabbitRepository)
+    public function homepage(PinkRabbitRepository $pinkRabbitRepository): Response
     {
         $this->floatingSmile();
 
