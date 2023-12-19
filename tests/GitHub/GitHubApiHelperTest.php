@@ -9,7 +9,7 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class GitHubApiHelperTest extends TestCase
 {
-    public function testGetOrganizationInfoIntegration()
+    public function testGetOrganizationInfoIntegration(): void
     {
         $httpClient = HttpClient::create();
         $apiHelper = new GitHubApiHelper($httpClient);

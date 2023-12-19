@@ -2,6 +2,7 @@
 
 namespace App\Twig;
 
+use DateInterval;
 use DateTime;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
@@ -12,6 +13,9 @@ use Twig\TwigFilter;
  */
 class DateExtension extends AbstractExtension
 {
+    /**
+     * @var array <string, string>
+     */
     public static $units = [
         'y' => 'year',
         'm' => 'month',
@@ -57,7 +61,7 @@ class DateExtension extends AbstractExtension
         return '';
     }
 
-    private function getPluralizedInterval($count, $invert, $unit)
+    private function getPluralizedInterval(int $count, int $invert, string $unit): string
     {
         if (1 !== $count) {
             $unit .= 's';

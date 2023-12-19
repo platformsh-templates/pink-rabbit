@@ -8,13 +8,14 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ApmCommand implements EventSubscriberInterface
 {
-    private $enabled;
+    private bool $enabled;
+
     public function __construct()
     {
         $this->enabled = method_exists(\BlackfireProbe::class, 'startTransaction');
     }
 
-    public function onConsoleCommand(ConsoleCommandEvent $event)
+    public function onConsoleCommand(ConsoleCommandEvent $event): void
     {
         if (!$this->enabled) {
             return;
@@ -24,7 +25,7 @@ class ApmCommand implements EventSubscriberInterface
         \BlackfireProbe::startTransaction();
     }
 
-    public function onConsoleTerminate(ConsoleTerminateEvent $event)
+    public function onConsoleTerminate(ConsoleTerminateEvent $event): void
     {
         if (!$this->enabled) {
             return;
