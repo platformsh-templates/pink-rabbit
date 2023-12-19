@@ -1,10 +1,10 @@
-name: bigfoot-workshop
+name: pink-rabbit
 type: php
 docroot: public
 php_version: "8.2"
 webserver_type: nginx-fpm
-router_http_port: "80"
-router_https_port: "443"
+router_http_port: "8082"
+router_https_port: "4432"
 xdebug_enabled: false
 additional_hostnames: []
 additional_fqdns: []
@@ -17,6 +17,8 @@ use_dns_when_possible: true
 composer_version: "2"
 web_environment:
   - DATABASE_URL=pgsql://db:db@db:5432/db
+  - PLATFORM_PROJECT=jumtvandtfviw
+  - PLATFORM_ENVIRONMENT=main
 nodejs_version: "16"
 hooks:
   post-start:
