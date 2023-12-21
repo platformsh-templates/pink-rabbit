@@ -4,6 +4,8 @@ twig:
         - bootstrap_4_layout.html.twig
     globals:
         site_name: '%env(resolve:SITE_NAME)%'
+    paths:
+        '%kernel.project_dir%/assets/images': images
 
 when@test:
     twig:
