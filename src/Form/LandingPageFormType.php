@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class LandingPageFormType extends AbstractType
@@ -35,6 +36,14 @@ class LandingPageFormType extends AbstractType
             ->add('optin', CheckboxType::class, [
                 'label' => 'Subscribe to Blackfire\'s mailing list',
                 'required' => false,
+            ])
+            ->add('terms', CheckboxType::class, [
+                'label_html' => true,
+                'label' => 'I agree to <a href="https://blackfire.io/terms-of-use">Blackfire\'s terms and conditions</a>',
+                'required' => true,
+                'constraints' => [new IsTrue([
+                    'message' => 'You must agree to the terms and conditions',
+                ])]
             ])
         ;
     }
