@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blackfire escape game{% endblock %}
+{% block tagline %}Blackfire escape game{% endblock %}
+
+{% block body %}
+
+<div class="col mb-5">
+    <h2 style="font-size: 1.5rem;">Getting started with the Blackfire's escape game!</h2>
+
+    <div>
+        <p>All the information needed to get started with Blackfire's escape game has been sent to your email.</p>
+        {% if optin %}
+            <p>Thank you for joining our mailing list. We usually send a newsletter every quarter.</p>
+        {% else %}
+            <p>You chose not to join Blackfire's newsletter and we respect your choice. No personal information were stored and you won't hear again from us unless you chose to.</p>
+        {% endif %}
+        <p>If you cannot wait, you can <a href="https://github.com/platformsh-templates/pink-rabbit#readme" class="text-danger"><strong>get started right now</strong> with Blackfire's escape game.</a></p>
+    </div>
+</div>
+
+{% endblock %}
