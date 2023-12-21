@@ -45,6 +45,14 @@ class LandingPageFormType extends AbstractType
                     'message' => 'You must agree to the terms and conditions',
                 ])]
             ])
+            ->add('privacy', CheckboxType::class, [
+                'label_html' => true,
+                'label' => 'I agree to <a href="https://platform.sh/privacy-policy">Blackfire\'s Privacy policy</a>',
+                'required' => true,
+                'constraints' => [new IsTrue([
+                    'message' => 'You must agree to the privacy policy',
+                ])]
+            ])
         ;
     }
 
