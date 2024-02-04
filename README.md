@@ -16,7 +16,7 @@ super power to observe your application real behavior and how its code is execut
 You may have seen a Pink Rabbit checking compulsively their watch?
 
 You get the chance to find your way out and reach Platform.sh booth at
-SymfonyCon 2023 Brussels. Follow the Pink Rabbit to enter the raffle to win a prize.
+Laracon EU 2024 Amsterdam. Follow the Pink Rabbit to enter the raffle to win a prize.
 
 Here's what you need to play the game:
 - [create a Blackfire account](https://blackfire.io/signup), if you don't already

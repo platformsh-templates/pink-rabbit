@@ -33,10 +33,10 @@ class LandingPageFormType extends AbstractType
                     ])
                 ]
             ])
-            ->add('optin', CheckboxType::class, [
-                'label' => 'Subscribe to Blackfire\'s mailing list',
-                'required' => false,
-            ])
+            // ->add('optin', CheckboxType::class, [
+            //     'label' => 'Subscribe to Blackfire\'s mailing list',
+            //     'required' => false,
+            // ])
             ->add('terms', CheckboxType::class, [
                 'label_html' => true,
                 'label' => 'I agree to <a href="https://blackfire.io/terms-of-use">Blackfire\'s terms and conditions</a>',
