@@ -48,7 +48,8 @@
     "symfonycorp/platformsh-meta": "^1.0",
     "twig/extra-bundle": "^3.3",
     "twig/intl-extra": "^3.3",
-    "twig/markdown-extra": "^3.3"
+    "twig/markdown-extra": "^3.3",
+    "platformsh/devrel-bi-php-sdk": "dev-main"
   },
   "require-dev": {
     "dama/doctrine-test-bundle": "^8.0",
@@ -108,5 +109,11 @@
       "allow-contrib": false,
       "require": "7.0.*"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:platformsh/devrel-bi-php-sdk.git"
+    }
+  ]
 }
