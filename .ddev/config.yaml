@@ -19,6 +19,10 @@ web_environment:
   - DATABASE_URL=pgsql://db:db@db:5432/db
   - PLATFORM_PROJECT=jumtvandtfviw
   - PLATFORM_ENVIRONMENT=main
+  - DEVREL_DATA_PIPELINE_PROJECT=blackfire_escape
+  - MAILER_DSN=null://null
+  - MAILER_SENDER=null@example.com
+  - MAILER_NO_REPLY=noreply@example.com
 nodejs_version: "16"
 hooks:
   post-start:
