@@ -12,7 +12,7 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
             $kernelRootDir: '%kernel.project_dir%'
-            $emailSender: '%env(MAILER_SENDER)%'
+            $emailSenderAddress: '%env(MAILER_SENDER)%'
             $noReplyAddress: '%env(MAILER_NO_REPLY)%'
 
     # makes classes in src/ available to be used as services
