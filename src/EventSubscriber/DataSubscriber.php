@@ -23,7 +23,7 @@ class DataSubscriber extends DataEventSubscriber
         $isProfiling = array_key_exists('HTTP_X_BLACKFIRE_QUERY', $_SERVER);
 
         $key = $path . "|" . (int) $isLoggedIn . "|" . (int) $isProfiling;
-        $mapping = json_decode(urldecode($_ENV['ACTION_LOGGING_MAP']), JSON_OBJECT_AS_ARRAY);
+        $mapping = json_decode(urldecode($_ENV['ACTION_LOGGING_MAP'] ?? ''), JSON_OBJECT_AS_ARRAY);
         $event = $mapping[$key] ?? null;
         if ($event) {
             $this->log($event);
