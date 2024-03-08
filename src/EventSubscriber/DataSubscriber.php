@@ -2,6 +2,7 @@
 
 namespace App\EventSubscriber;
 
+use App\Entity\User;
 use Platformsh\DevRelBIPhpSdk\Symfony\EventSubscriber\DataEventSubscriber;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 
