@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\CheshireCat;
 use App\Repository\PinkRabbitRepository;
-use Platformsh\DevRelBIPhpSdk\Symfony\Track;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
