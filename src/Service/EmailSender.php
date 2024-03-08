@@ -12,7 +12,7 @@ class EmailSender
     public function __construct(
         private MailerInterface $mailer,
         private string $kernelRootDir,
-        private string $emailSender,
+        private string $emailSenderAddress,
         private string $noReplyAddress
     )
     {
@@ -25,7 +25,7 @@ class EmailSender
     ): void
     {
         $message = (new TemplatedEmail())
-            ->from(new Address($this->emailSender, 'Blackfire'))
+            ->from(new Address($this->emailSenderAddress, 'Blackfire'))
             ->to(new Address(address: $email, name: $name))
             ->addReplyTo(new Address($this->noReplyAddress, 'Blackfire (No reply)'))
             ->subject('Blackfire escape game')
