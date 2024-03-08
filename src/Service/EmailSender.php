@@ -10,6 +10,7 @@ use Symfony\Component\Mime\Part\DataPart;
 class EmailSender
 {
     public function __construct(
+        private MailerInterface $mailer,
         private string $kernelRootDir,
         private string $emailSender,
         private string $noReplyAddress
@@ -18,7 +19,6 @@ class EmailSender
     }
 
     public function sendmail(
-        MailerInterface $mailer,
         string          $email,
         string          $name,
         bool            $optin = false
@@ -37,7 +37,7 @@ class EmailSender
                 'optin' => $optin,
             ]);
 
-        $mailer->send($message);
+        $this->mailer->send($message);
     }
 
     public function optin(string $email, string $name, bool $optin = false): void

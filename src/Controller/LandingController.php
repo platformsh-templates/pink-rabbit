@@ -8,7 +8,6 @@ use Platformsh\DevRelBIPhpSdk\Symfony\DataLogger;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LandingController extends MainController
@@ -17,7 +16,6 @@ class LandingController extends MainController
     public function landing(
         Request $request,
         FormFactoryInterface $formFactory,
-        MailerInterface $mailer,
         DataLogger $dataLogger,
         EmailSender $emailSender
     ): Response {
@@ -32,7 +30,7 @@ class LandingController extends MainController
             $optin = $data['optin'] ?? false;
 
             $dataLogger->log('landing-page-form-submitted');
-            $emailSender->sendmail($mailer, $email, $name, $optin);
+            $emailSender->sendmail($email, $name, $optin);
 
             if ($data['optin'] ?? false) {
                 $dataLogger->log('landing-page-newsletter-optin');
