@@ -9,29 +9,23 @@ class DataSubscriber extends DataEventSubscriber
 {
     protected function logEvents(RequestEvent $event): void
     {
-        $isLoggedIn = $this->isLoggedIn();
+        /**
+         * Will you cheat and find a shortcut to the last step?
+         * Well, you can't. But congrats on exploring up there. Smart move!
+         * We are logging key actions to know how many people reach each step.
+         * So, nothing interesting for you is happening here.
+         */
+
         $request = $event->getRequest();
         $path = $request->getPathInfo();
+        $isLoggedIn = $this->isLoggedIn();
+        $isProfiling = array_key_exists('HTTP_X_BLACKFIRE_QUERY', $_SERVER);
 
-        switch (true) {
-            case '/landing' === $path:
-                $this->log('landing');
-                break;
-            case '/' === $path && !$isLoggedIn:
-                $this->log('step1');
-                break;
-            case '/eat-me' === $path:
-                $this->log('step2');
-                break;
-            case '/sighting/666' === $path:
-                $this->log('step3');
-                break;
-            case '/login' === $path:
-                $this->log('step3');
-                break;
-            case '/' === $path && $isLoggedIn:
-                $this->log('final');
-                break;
+        $key = $path . "|" . (int) $isLoggedIn . "|" . (int) $isProfiling;
+        $mapping = json_decode(urldecode($_ENV['ACTION_LOGGING_MAP']), JSON_OBJECT_AS_ARRAY);
+        $event = $mapping[$key] ?? null;
+        if ($event) {
+            $this->log($event);
         }
     }
 
@@ -44,6 +38,7 @@ class DataSubscriber extends DataEventSubscriber
     {
         return [
             'is_logged_in' => $this->isLoggedIn(),
+            'conference' => $_ENV['EVENT_NAME'] ?? '',
         ];
     }
 
