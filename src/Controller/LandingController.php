@@ -3,15 +3,11 @@
 namespace App\Controller;
 
 use App\Form\LandingPageFormType;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use App\Service\EmailSender;
+use Platformsh\DevRelBIPhpSdk\Symfony\DataLogger;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Mailer;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
-use Symfony\Component\Mime\Email;
-use Symfony\Component\Mime\Part\DataPart;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LandingController extends MainController
@@ -20,7 +16,8 @@ class LandingController extends MainController
     public function landing(
         Request $request,
         FormFactoryInterface $formFactory,
-        MailerInterface $mailer
+        DataLogger $dataLogger,
+        EmailSender $emailSender
     ): Response {
         $form = $formFactory->createNamed('', LandingPageFormType::class);
         $form->handleRequest($request);
@@ -32,10 +29,12 @@ class LandingController extends MainController
             $name = $data['name'] ?? null;
             $optin = $data['optin'] ?? false;
 
-            $this->sendmail($mailer, $email, $name, $optin);
+            $dataLogger->log('landing-page-form-submitted');
+            $emailSender->sendmail($email, $name, $optin);
 
             if ($data['optin'] ?? false) {
-                $this->optin($email, $name, $optin);
+                $dataLogger->log('landing-page-newsletter-optin');
+                $emailSender->optin($email, $name, $optin);
             }
 
             return $this->render('main/landing_information_sent.html.twig', [
@@ -46,35 +45,5 @@ class LandingController extends MainController
         return $this->render('main/landing.html.twig', [
             'form' => $form->createView()
         ]);
-    }
-
-    private function sendmail(
-        MailerInterface $mailer,
-        string $email,
-        string $name,
-        bool $optin = false
-    ): void {
-        $address = 'thomas.diluccio@platform.sh';
-        $message = (new TemplatedEmail())
-            ->from(new Address('devrel@internal.platform.sh', 'Blackfire'))
-            ->to(new Address(address: $email, name: $name))
-            ->subject('Blackfire escape game')
-            ->addPart((new DataPart(fopen($this->getParameter('kernel.project_dir') . '/assets/images/blackfire_logo.png', 'r'), 'logo', 'image/png'))->asInline())
-            ->htmlTemplate('mail/landing.html.twig')
-            ->textTemplate('mail/landing_text.html.twig')
-            ->context([
-                'name' => $name,
-                'optin' => $optin,
-            ])
-        ;
-
-        $mailer->send($message);
-    }
-
-    private function optin(string $email, string $name, bool $optin = false): void
-    {
-        if (!$optin) {
-            return;
-        }
     }
 }
