@@ -2108,12 +2108,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/platformsh/devrel-bi-php-sdk.git",
-                "reference": "8e5ca3b21ebdcae1b3b53afbd0afeb867e5ceec5"
+                "reference": "56d9d3fb5b09843f847c7cd061b48201a723e1ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/platformsh/devrel-bi-php-sdk/zipball/8e5ca3b21ebdcae1b3b53afbd0afeb867e5ceec5",
-                "reference": "8e5ca3b21ebdcae1b3b53afbd0afeb867e5ceec5",
+                "url": "https://api.github.com/repos/platformsh/devrel-bi-php-sdk/zipball/56d9d3fb5b09843f847c7cd061b48201a723e1ec",
+                "reference": "56d9d3fb5b09843f847c7cd061b48201a723e1ec",
                 "shasum": ""
             },
             "require": {
@@ -2144,7 +2144,7 @@
                 "source": "https://github.com/platformsh/devrel-bi-php-sdk/tree/main",
                 "issues": "https://github.com/platformsh/devrel-bi-php-sdk/issues"
             },
-            "time": "2024-03-08T10:15:22+00:00"
+            "time": "2024-03-08T10:31:31+00:00"
         },
         {
             "name": "psr/cache",
