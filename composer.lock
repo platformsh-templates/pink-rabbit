@@ -1330,16 +1330,16 @@
         },
         {
             "name": "doctrine/persistence",
-            "version": "3.3.1",
+            "version": "3.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/persistence.git",
-                "reference": "b6fd1f126b13c1f7e7321f7338b14a19116b5de4"
+                "reference": "477da35bd0255e032826f440b94b3e37f2d56f42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/persistence/zipball/b6fd1f126b13c1f7e7321f7338b14a19116b5de4",
-                "reference": "b6fd1f126b13c1f7e7321f7338b14a19116b5de4",
+                "url": "https://api.github.com/repos/doctrine/persistence/zipball/477da35bd0255e032826f440b94b3e37f2d56f42",
+                "reference": "477da35bd0255e032826f440b94b3e37f2d56f42",
                 "shasum": ""
             },
             "require": {
@@ -1408,7 +1408,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/persistence/issues",
-                "source": "https://github.com/doctrine/persistence/tree/3.3.1"
+                "source": "https://github.com/doctrine/persistence/tree/3.3.2"
             },
             "funding": [
                 {
@@ -1424,7 +1424,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-01T19:53:13+00:00"
+            "time": "2024-03-12T14:54:36+00:00"
         },
         {
             "name": "doctrine/sql-formatter",
@@ -2108,12 +2108,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/platformsh/devrel-bi-php-sdk.git",
-                "reference": "56d9d3fb5b09843f847c7cd061b48201a723e1ec"
+                "reference": "9596b5a6d9470f463d345962767526b1eb3de894"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/platformsh/devrel-bi-php-sdk/zipball/56d9d3fb5b09843f847c7cd061b48201a723e1ec",
-                "reference": "56d9d3fb5b09843f847c7cd061b48201a723e1ec",
+                "url": "https://api.github.com/repos/platformsh/devrel-bi-php-sdk/zipball/9596b5a6d9470f463d345962767526b1eb3de894",
+                "reference": "9596b5a6d9470f463d345962767526b1eb3de894",
                 "shasum": ""
             },
             "require": {
@@ -2144,7 +2144,7 @@
                 "source": "https://github.com/platformsh/devrel-bi-php-sdk/tree/main",
                 "issues": "https://github.com/platformsh/devrel-bi-php-sdk/issues"
             },
-            "time": "2024-03-08T10:31:31+00:00"
+            "time": "2024-03-12T16:37:22+00:00"
         },
         {
             "name": "psr/cache",
