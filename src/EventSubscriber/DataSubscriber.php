@@ -30,11 +30,6 @@ class DataSubscriber extends DataEventSubscriber
         }
     }
 
-    protected function getUserId(RequestEvent $event): ?string
-    {
-        return null;
-    }
-
     protected function getSharedData(RequestEvent $event): array
     {
         return [
