@@ -1,7 +1,7 @@
 name: pink-rabbit
 type: php
 docroot: public
-php_version: "8.3"
+php_version: "8.2"
 webserver_type: nginx-fpm
 router_http_port: "8082"
 router_https_port: "4432"
