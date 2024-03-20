@@ -20,6 +20,10 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
     /** @var Generator */
     private $faker;
 
+    /**
+     * @param array<int, User> $users
+     * @param array<int, PinkRabbit> $sightings
+     */
     public function __construct(
         private UserPasswordHasherInterface $passwordEncoder,
         private array $users = [],
@@ -32,7 +36,7 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
         return ['primary'];
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $this->objectManager = $manager;
         $this->faker = Factory::create();
@@ -44,7 +48,7 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    private function createUsers()
+    private function createUsers(): void
     {
         $this->users = $this->createMany(100, function() {
             $user = new User();
@@ -59,7 +63,7 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
         });
     }
 
-    private function createSightings()
+    private function createSightings(): void
     {
         $this->sightings = $this->createMany(200, function() {
             $sighting = new PinkRabbit();
@@ -75,14 +79,14 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
         });
     }
 
-    private function createComments()
+    private function createComments(): void
     {
         $this->createMany(4000, function(int $i) {
             $comment = new Comment();
             if ($i % 5 === 0) {
                 // make every 5th comment done by a small set of users
                 // Wow! They must *love* Winky!
-                $rangeMax = floor(count($this->users) / 10);
+                $rangeMax = (int) floor(count($this->users) / 10);
                 $comment->setOwner($this->users[rand(0, $rangeMax)]);
             } else {
                 $comment->setOwner($this->users[array_rand($this->users)]);
@@ -98,7 +102,10 @@ class AppFixtures extends Fixture implements FixtureGroupInterface
         });
     }
 
-    private function createMany(int $amount, callable $callback)
+    /**
+     * @return array<int, User|PinkRabbit|Comment>
+     */
+    private function createMany(int $amount, callable $callback): array
     {
         $objects = [];
         for ($i = 0; $i < $amount; $i++) {

@@ -1,0 +1,44 @@
+{% extends 'mail/mail_template.html.twig' %}
+
+{% block body %}
+    <h2>
+        Hello {{ name }}
+    </h2>
+    <p>
+        Blackfire Escape game is a fun way to discover <a href="https://www.blackfire.io/">Blackfire</a>. It should take you about 10 minutes of your times to solve all the puzzles based on Alice in Wonderland.
+    </p>
+    <p>
+        Indeed, it's seems you've seen a Pink Rabbit and fell into a hole. Your objective is to escape this magical place using a <a href="https://escape.book.b7e.io/">codebase</a>, your IDE, <a href="https://escape.book.b7e.io/">an app</a>, eventually a <a href="https://docs.blackfire.io/introduction">documentation</a>, and discovering a new wizard trick along the way: <strong>Blackfire Profiler</strong>.
+    </p>
+    <h3>Here's what you need to play the game:</h3>
+    <p>
+        <ul>
+            <li><a href="https://blackfire.io/signup">Create a Blackfire account</a>, if you don't already
+    have one</li>
+            <li><a href="https://blackfire.io/docs/integrations/browsers/index">Install Blackfire browser extension</a></li>
+            <li>An IDE</li>
+            <li><a href="https://github.com/platformsh-templates/pink-rabbit#readme">A codebase</a></li>
+        </ul>
+    </p>
+
+    <p>
+        Then, go to <a href="https://escape.book.b7e.io/">escape.book.b7e.io</a>,
+        profile the page by clicking the big red button in Blackfire browser extension.
+    </p>
+    <p>
+        Follow the clues Winky, our Pink Rabbit, left behind them in the profiles and
+        in <a href="https://github.com/platformsh-templates/pink-rabbit#readme">the repo</a>.
+    </p>
+
+<p>You don't need a subscription, that site is freely profilable by all.</p>
+
+<h3><a href="https://escape.book.b7e.io/">Ready to face that challenge? Let's play!</a></h3>
+
+{% endblock %}
+
+{% block footer %}
+    <p>You received this email because you <a href="{{ url('landing_page') }}">requested</a> the Blackfire Escape game instruction to be mailed to you.</p>
+    {% if not optin %}
+        <p>As you requested, no information were stored and you won't hear again from us unless you chose to.</p>
+    {% endif %}
+{% endblock %}

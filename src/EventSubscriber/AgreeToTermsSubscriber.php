@@ -4,11 +4,11 @@ namespace App\EventSubscriber;
 
 use App\Entity\User;
 use App\Form\AgreeToUpdatedTermsFormType;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
-use Symfony\Component\Security\Core\Security;
 use Symfony\WebpackEncoreBundle\Asset\EntrypointLookupInterface;
 use Twig\Environment;
 
@@ -22,7 +22,7 @@ class AgreeToTermsSubscriber implements EventSubscriberInterface
     ) {
     }
 
-    public function onRequestEvent(RequestEvent $event)
+    public function onRequestEvent(RequestEvent $event): void
     {
         $user = $this->security->getUser();
 

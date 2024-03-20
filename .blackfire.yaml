@@ -17,7 +17,7 @@ metrics:
             php:
                 - callee: "=App\\Controller\\EatMeController::floatingSmile"
 
-    CHECK.THE.ASSERTIONS.TAB:
+    CHECK_THE_.BLACKFIRE.YAML_FILE:
         label: "SecurityController::login"
         description: |
             This is where the magic is happening if you want to keep
@@ -40,27 +40,18 @@ tests:
         assertions:
             - "main.wall_time > 1ms"
         description: |
-            Recommendations are personalized actionable insights based on the profile data. Only the ones relevant to the script profiled are displayed.
+            Recommendations are personalized actionable insights based on the profile data.
+            Only the ones relevant to the script profiled are displayed.
             
             They can help you speed up your performance optimization work!
 
             Check the Recommendations tab, and come back here.
 
-    "It's always test time!":
-        path: "/login"
-        assertions:
-            - "metrics.CHECK.THE.ASSERTIONS.TAB.count == 666"
-        description: |
-            Are we losing our minds? Why would we want to go 666 times within a specific function?
 
-            Let's keep our application under control by writing performance tests and custom metrics.
-
-            Alice, now check the .blackfire.yaml file where the test party is happening
-
-    ##### " -> Drink me! <- ":
-    #####     path: "If I were you, I would really log in to play cricket."
-    #####     assertions:
-    #####         - "main.wall_time == 666ms"
+    ########## " -> Drink me! <- ":                                                 ##########
+    ##########     path: "If I were you, I would really log in to play cricket."    ##########
+    ##########     assertions:                                                      ##########
+    ##########         - "main.wall_time == 666ms"                                  ##########
 
 
 

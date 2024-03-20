@@ -4,9 +4,9 @@ namespace App\GitHub;
 
 class GitHubOrganization
 {
-    private $name;
+    private string $name;
 
-    private $repositoryCount;
+    private int $repositoryCount;
 
     public function __construct(string $organizationName, int $repositoryCount)
     {
