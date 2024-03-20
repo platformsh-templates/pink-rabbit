@@ -81,6 +81,11 @@ crons:
         spec: '*/5 * * * *'
         cmd: './bin/console app:update-sighting-scores'
 
+workers:
+    async-data:
+        commands:
+            start: symfony console messenger:consume --time-limit=60 --memory-limit=128M
+
 source:
     operations:
         update-dependencies:
