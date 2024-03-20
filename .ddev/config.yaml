@@ -17,6 +17,7 @@ use_dns_when_possible: true
 composer_version: "2"
 web_environment:
   - DATABASE_URL=pgsql://db:db@db:5432/db
+  - MESSENGER_TRANSPORT_DSN=redis://redis:6379/messages
   - PLATFORM_PROJECT=jumtvandtfviw
   - PLATFORM_ENVIRONMENT=main
   - DEVREL_DATA_PIPELINE_PROJECT=blackfire_escape

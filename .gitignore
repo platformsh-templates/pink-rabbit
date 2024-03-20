@@ -9,6 +9,8 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+/devrel-bi-php-sdk
+
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
 /public/build/

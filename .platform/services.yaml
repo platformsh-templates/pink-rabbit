@@ -1,3 +1,7 @@
 db:
     type: postgresql:14
     disk: 2048
+
+cache:
+    type: redis-persistent:7.2
+    disk: 256

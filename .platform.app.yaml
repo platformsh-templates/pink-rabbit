@@ -24,6 +24,7 @@ runtime:
         - xsl
         - pdo_pgsql
         - blackfire
+        - redis
 
 variables:
     env:
@@ -54,6 +55,7 @@ hooks:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: "db:postgresql"
+    rediscache: "cache:redis"
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
@@ -78,6 +80,11 @@ crons:
     update-sighting:
         spec: '*/5 * * * *'
         cmd: './bin/console app:update-sighting-scores'
+
+workers:
+    async-data:
+        commands:
+            start: symfony console messenger:consume --time-limit=60 --memory-limit=128M
 
 source:
     operations:
