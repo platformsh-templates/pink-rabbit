@@ -24,6 +24,7 @@ runtime:
         - xsl
         - pdo_pgsql
         - blackfire
+        - redis
 
 variables:
     env:
