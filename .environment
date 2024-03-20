@@ -11,4 +11,4 @@ export DATABASE_NAME=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".
 export DATABASE_USER=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".database[0].username")
 export DATABASE_PASSWORD=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".database[0].password")
 
-export MESSENGER_TRANSPORT_DSN=$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".redis[0].url")/messages
+export MESSENGER_TRANSPORT_DSN=redis://$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".redis[0].host"):$(echo $PLATFORM_RELATIONSHIPS | base64 --decode | jq -r ".redis[0].port")/messages
