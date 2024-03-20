@@ -36,3 +36,9 @@ services:
 
     Platformsh\DevRelBIPhpSdk\Symfony\DataLogger:
         autowire: true
+
+    Platformsh\DevRelBIPhpSdk\RequestManager:
+        autowire: true
+
+    Platformsh\DevRelBIPhpSdk\Symfony\MessageHandler\AsyncDataStorageHandler:
+        autowire: true
