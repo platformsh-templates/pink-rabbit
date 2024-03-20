@@ -3,4 +3,5 @@ db:
     disk: 2048
 
 cache:
-    type: redis-persistent:6.0
+    type: redis-persistent:7.2
+    disk: 128
