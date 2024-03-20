@@ -4,4 +4,4 @@ db:
 
 cache:
     type: redis-persistent:7.2
-    disk: 128
+    disk: 256
