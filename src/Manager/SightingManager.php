@@ -42,7 +42,7 @@ class SightingManager
          * It would be crazy not to use it.
          *
          * Let's get in the Queen's castle curtain walls to play cricket.
-         * Go to the `/login` page
+         * Profile the `/login` page and check its timeline.
          */
 
         return $this->pinkRabbitRepository->findOneByTitle('Follow me!');
