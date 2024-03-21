@@ -58,7 +58,7 @@ class SightingCatFixtures extends Fixture implements FixtureGroupInterface
         $sighting = new PinkRabbit();
         $sighting->setOwner($cheshireCat);
         $sighting->setTitle('Follow me!');
-        $sighting->setDescription('Profile the page and look for the hidden image URL.');
+        $sighting->setDescription('Look at this page: is someone giving you an advice? Then, profile the page and look for the hidden image URL HTTP call.');
         $sighting->setConfidenceIndex(10);
         $sighting->setScore(666);
         $sighting->setLatitude($this->faker->latitude);
@@ -73,7 +73,7 @@ class SightingCatFixtures extends Fixture implements FixtureGroupInterface
         $comment = new Comment();
         $comment->setOwner($cheshireCat);
         $comment->setPinkRabbit($sighting);
-        $comment->setContent('<-------- Hello! Is it me you\'re looking for?');
+        $comment->setContent('<-------- Hello! Is it me you\'re looking for? There is an HTTP tab on the profile. Which function is making that call?');
         $comment->setCreatedAt($this->faker->dateTimeBetween(
             $sighting->getCreatedAt(),
             'now'

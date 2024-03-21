@@ -25,20 +25,24 @@ class SightingManager
         }
 
         /**
-         * Al!ce, only a few find the way, some don’t recognize it when they do;
-         * some… don’t ever want to.
+         * Al!ce, only a few find the way, some don't recognize it when they do;
+         * some… don't ever want to.
          *
          * Look for `pink_winky_blinking` in the call-graph and click on the
          * magnifying glass. It's showing you the sequences of calls leading
          * to that HTTP call.
          *
+         * Similarly, you could also search for a SQL query. It's like a
+         * Marauder's Map for you app.
+         *
          * The Queen of Heart wants to make your app headless. The HTTP tab is
-         * listing all the calls to your webservices.
+         * listing all the calls to your webservices. The SQL one all the
+         * requests to your database.
          *
          * It would be crazy not to use it.
          *
          * Let's get in the Queen's castle curtain walls to play cricket.
-         * Profile the `/login` page
+         * Go to the `/login` page
          */
 
         return $this->pinkRabbitRepository->findOneByTitle('Follow me!');

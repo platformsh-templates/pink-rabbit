@@ -21,9 +21,10 @@ web_environment:
   - PLATFORM_PROJECT=jumtvandtfviw
   - PLATFORM_ENVIRONMENT=main
   - DEVREL_DATA_PIPELINE_PROJECT=blackfire_escape
-  - MAILER_DSN=null://null
-  - MAILER_SENDER=null@example.com
-  - MAILER_NO_REPLY=noreply@example.com
+  - DEVREL_DATA_PIPELINE_LOG_PAGEVIEWS=false
+  - DEVREL_DATA_PIPELINE_LOG_PROFILES=true
+  - BLACKFIRE_DISABLE_AGGREGATION=true
+  - ACTION_LOGGING_MAP=%7B%22%5C%2Flanding%7C0%7C0%22%3A%22landing%22%2C%22%5C%2F%7C0%7C0%22%3A%22step1%22%2C%22%5C%2F%7C0%7C1%22%3A%22step1-profiling%22%2C%22%5C%2Feat-me%7C0%7C0%22%3A%22step2%22%2C%22%5C%2Feat-me%7C0%7C1%22%3A%22step2-profiling%22%2C%22%5C%2Fsighting%5C%2F666%7C0%7C0%22%3A%22step3%22%2C%22%5C%2Fsighting%5C%2F666%7C0%7C1%22%3A%22step3-profiling%22%2C%22%5C%2Flogin%7C0%7C0%22%3A%22step4%22%2C%22%5C%2F%7C1%7C0%22%3A%22final%22%7D
 nodejs_version: "16"
 hooks:
   post-start:
