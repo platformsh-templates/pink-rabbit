@@ -136,6 +136,9 @@ class MainController extends AbstractController
              * Go and profile `/eat-me`, then compare profiles and realities.
              * https://blackfire.io/my/profiles
              *
+             * You can learn more about profile comparisons here:
+             * https://docs.blackfire.io/profiling-cookbooks/understanding-comparisons
+             *
              * Is the clock really ticking faster?
              * Can you see what's hidden and staring at you?
              */
