@@ -39,9 +39,10 @@ class SightingManager
          * listing all the calls to your webservices. The SQL one all the
          * requests to your database.
          *
-         * It would be crazy not to use it.
+         * It would be crazy not to use it. Have you give it a try?
+         * Good job, but we're not done.
          *
-         * Let's get in the Queen's castle curtain walls to play cricket.
+         * Now, let's get in the Queen's castle curtain walls to play cricket.
          * Profile the `/login` page and check its timeline.
          */
 

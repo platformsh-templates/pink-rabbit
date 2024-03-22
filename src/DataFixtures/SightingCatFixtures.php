@@ -73,7 +73,7 @@ class SightingCatFixtures extends Fixture implements FixtureGroupInterface
         $comment = new Comment();
         $comment->setOwner($cheshireCat);
         $comment->setPinkRabbit($sighting);
-        $comment->setContent('<-------- Hello! Is it me you\'re looking for? There is an HTTP tab on the profile. Which function is making that call?');
+        $comment->setContent('<-------- Hello! Is it me you\'re looking for? There is an HTTP tab on the profile. Which function is making that call? Use the searchbar of the main callgraph to look for the URL you will find in the HTTP tab. Click on the magnifying glass, and climb up the caller/callee relationship until you find some the function call responsible for that call.');
         $comment->setCreatedAt($this->faker->dateTimeBetween(
             $sighting->getCreatedAt(),
             'now'
