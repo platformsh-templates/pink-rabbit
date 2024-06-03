@@ -11,8 +11,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class UpdateSightingScoresCommand extends Command
 {
-    public function __construct(private PinkRabbitRepository $pinkRabbitRepository, private EntityManagerInterface $entityManager)
-    {
+    public function __construct(
+        private PinkRabbitRepository $pinkRabbitRepository,
+        private EntityManagerInterface $entityManager
+    ) {
         parent::__construct();
     }
 

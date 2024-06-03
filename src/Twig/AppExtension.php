@@ -9,9 +9,9 @@ use Twig\TwigFilter;
 
 class AppExtension extends AbstractExtension
 {
-    public function __construct(private CommentHelper $commentHelper)
-    {
-    }
+    public function __construct(
+        private CommentHelper $commentHelper
+    ) {}
 
     public function getFilters(): array
     {
